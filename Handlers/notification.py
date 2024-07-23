@@ -26,8 +26,8 @@ async def send_notification():
         else:
             message = "у вас нет запланированных задач"
 
-        await bot.send_message(chat_id=user, text=f"напоминание\n"
-                                                  f"добрый день! не забудьте про - {message}")
+        await bot.send_message(chat_id=i, text=f"напоминание\n"
+                                           f"добрый день! не забудьте про - {message}")
 
 async  def set_scheduler():
     scheduler = AsyncIOScheduler(timezone="Asia/Bishkek")

@@ -37,29 +37,30 @@ async def start_sending_products(message: types.Message):
     products = fetch_all_products()
     if products:
         await send_product(message, products[0]['id'])
+
     else:
-        await message.answer('Товары не найдены')
+        await message.answer(text='РўРѕРІР°СЂС‹ РЅРµ РЅР°Р№РґРµРЅС‹')
 
 
 async def send_product(message: types.Message, product_id):
     product = fetch_products_by_id(product_id)
 
     if product:
-        caption = (f"Название - {product['name_product']}\n"
-                   f"Размер - {product['size']}\n"
-                   f"Цена - {product['price']}\n"
-                   f"Артикул - {product['productid']}\n"
-                   f"Категория - {product['category']}\n"
-                   f"Информация о товаре - {product['infoproduct']}\n\n")
+        caption = (f"РќР°Р·РІР°РЅРёРµ - {product['name_product']}\n"
+                   f"Р Р°Р·РјРµСЂ - {product['size']}\n"
+                   f"Р¦РµРЅР° - {product['price']}\n"
+                   f"РђСЂС‚РёРєСѓР» - {product['productid']}\n"
+                   f"РљР°С‚РµРіРѕСЂРёСЏ - {product['category']}\n"
+                   f"РРЅС„РѕСЂРјР°С†РёСЏ Рѕ С‚РѕРІР°СЂРµ - {product['infoproduct']}\n\n")
 
         keyboard = InlineKeyboardMarkup()
-        next_buttons = InlineKeyboardButton('Далее', callback_data=f'next_{product_id}')
+        next_buttons = InlineKeyboardButton('Р”Р°Р»РµРµ', callback_data=f'next_{product_id}')
         keyboard.add(next_buttons)
 
         await message.answer_photo(photo=product['photo'], caption=caption, reply_markup=keyboard)
 
     else:
-        await message.answer_photo('Товаров нет!')
+        await message.answer('РўРѕРІР°СЂРѕРІ РЅРµС‚!')
 
 
 async def next_product(callback_query: types.CallbackQuery):

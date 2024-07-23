@@ -1,9 +1,9 @@
-
+﻿
 
 import logging
 from config import Dp, admin, bot
 from aiogram.utils import executor
-from Handlers import commands, echo, guiz,  FSM_products_details
+from Handlers import commands, echo, guiz,  FSM_products_details, send_products, webapp, admin_group
 from db import main_db
 from Handlers import notification
 
@@ -26,7 +26,10 @@ commands.register_commands(Dp)
 guiz.register_quiz(Dp)
 FSM_products_details.register_fsm_for_products_details(Dp)
 notification.register_notification(Dp)
-echo.register_echo(Dp)
+send_products.register_send_products(Dp)
+webapp.register_online_websites(Dp)
+admin_group.register_admin(Dp)
+# echo.register_echo(Dp)
 
 
 if __name__ == "__main__":

@@ -136,6 +136,6 @@ def register_fsm_for_products_details(Dp: Dispatcher):
     Dp.register_message_handler(load_product_id, state=Products_Details.product_id)
     Dp.register_message_handler(load_category, state=Products_Details.category)
     Dp.register_message_handler(load_info_product, state=Products_Details.info_product)
-    Dp.register_message_handler(load_collection, state=Products_Details.collection)  # Register collection handler
+    Dp.register_message_handler(load_collection, state=Products_Details.collection)
     Dp.register_message_handler(load_photo, state=Products_Details.photo, content_types=["photo"])
     Dp.register_callback_query_handler(submit, state=Products_Details.submit)
